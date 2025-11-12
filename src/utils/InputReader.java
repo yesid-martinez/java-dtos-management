@@ -9,6 +9,27 @@ public class InputReader {
             System.out.println("Please enter a valid number.");
             sc.next();
         }
-        return sc.nextInt();
+        int num = sc.nextInt();
+        sc.nextLine();
+        return num;
+    }
+
+    public static long scanLong() {
+        while (!sc.hasNextLong()) {
+            System.out.println("Please enter a valid number.");
+            sc.next();
+        }
+        long num = sc.nextLong();
+        sc.nextLine();
+        return num;
+    }
+
+    public static String scanString() {
+        String input = sc.nextLine();
+        while (input == null) {
+            System.out.println("Por favor, ingrese un texto válido:");
+            input = sc.nextLine();
+        }
+        return input;
     }
 }

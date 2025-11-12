@@ -1,5 +1,7 @@
 package domain.objects;
 
+import java.util.regex.Pattern;
+
 public class User {
     private int id;
     private String username;
@@ -7,8 +9,14 @@ public class User {
     private long documentId;
 
     public boolean checkEmail(){
-        this.setEmail("example@gmail.com");
-        return false;
+        if (this.email == null) return false;
+        // Basic regex for email validation
+        String regex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
+        return Pattern.matches(regex, this.email);
+    }
+
+    public boolean checkDoc() {
+        return this.documentId>=10000000;
     }
 
     public int getId() {

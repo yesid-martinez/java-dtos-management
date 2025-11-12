@@ -11,10 +11,16 @@ public class UserService {
         User user = mapper.createEntity(dto);
         if(!user.checkEmail()){
             System.out.println("Invalid email: " + user.getEmail());
-        }else{
-            // Repository.save(user);
-            System.out.println("User created successfully!");
+            return;
         }
+
+        if(!user.checkDoc()){
+            System.out.println("Invalid document: " + user.getDocumentId());
+            return;
+        }
+
+        // Repository.save(user);
+        System.out.println("User created successfully!");
     }
 
     public void /* List<T> */ getAllUsers(){

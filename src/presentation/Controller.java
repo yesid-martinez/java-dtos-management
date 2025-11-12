@@ -13,6 +13,23 @@ public class Controller {
         userDto = new UserDTO();
     }
 
+    public void addUser(){
+        System.out.print("Enter username: ");
+        userDto.setUsername(InputReader.scanString());
+
+        System.out.print("Enter email: ");
+        userDto.setEmail(InputReader.scanString());
+
+        System.out.print("Enter document ID: ");
+        userDto.setDocumentId(InputReader.scanLong());
+
+        try {
+            userService.register(userDto);
+        } catch (IllegalArgumentException ex) {
+            System.out.println("Error: " + ex.getMessage());
+        }
+    }
+
     public void run(){
         int opt;
         do{
@@ -25,7 +42,7 @@ public class Controller {
 
             switch (opt){
                 case 1:
-                    userService.register(userDto);
+                    addUser();
                     break;
                 case 2:
                     System.out.println(2);
