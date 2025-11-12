@@ -1,8 +1,17 @@
 package presentation;
 
+import application.dto.UserDTO;
+import application.service.UserService;
 import utils.InputReader;
 
 public class Controller {
+    UserService userService;
+    UserDTO userDto;
+
+    public Controller(){
+        userService = new UserService();
+        userDto = new UserDTO();
+    }
 
     public void run(){
         int opt;
@@ -16,7 +25,7 @@ public class Controller {
 
             switch (opt){
                 case 1:
-                    System.out.println(1);
+                    userService.register(userDto);
                     break;
                 case 2:
                     System.out.println(2);
