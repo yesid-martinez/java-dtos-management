@@ -4,6 +4,8 @@ import application.dto.UserDTO;
 import application.service.UserService;
 import utils.InputReader;
 
+import java.util.List;
+
 public class Controller {
     UserService userService;
     UserDTO userDto;
@@ -30,6 +32,23 @@ public class Controller {
         }
     }
 
+    public void getAllUsers(){
+        List<UserDTO> users = userService.getAllUsers();
+        System.out.println(" -- Users list -- ");
+        if (users.isEmpty()){
+            System.out.println("No users found.");
+            return;
+        }
+
+        for (UserDTO u : users){
+            System.out.println(
+                    u.getId() + ". " + u.getUsername() +
+                            "\n   Email: " + u.getEmail() +
+                            "\n   Document: " + u.getDocumentId() + "\n"
+            );
+        }
+    }
+
     public void run(){
         int opt;
         do{
@@ -45,7 +64,7 @@ public class Controller {
                     addUser();
                     break;
                 case 2:
-                    System.out.println(2);
+                    getAllUsers();
                     break;
                 case 3:
                     System.out.println("Closing application...");
